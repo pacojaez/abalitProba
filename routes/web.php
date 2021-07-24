@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,19 +22,18 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/productos', function() {
-    return view('allproducts');
-})->name('allproducts');
+// Route::get('/productos', function() {
+//     return view('allproducts');
+// })->name('allproducts');
 
-Route::get('/productos/{product_id}', function($product_id) {
-    return view('singleproduct', compact('product_id'));
-})->name('singleproduct');
+Route::get('/productos/{product}', [ProductController::class, 'show'])->name('single-product');
+
+Route::get('/productos', [ProductController::class, 'index'])->name('productos');
+
 
 
 //****TODO******/
 /****
- *
- * DEFINIR RUTA SINGLE PRODUCT PARA VER UN SOLO PRODUCTO
  *
  * USAR COMPONENTES DE LIVEWIRE PARA REFACTORIZAR LA APP LO MÁS POSIBLE
  *

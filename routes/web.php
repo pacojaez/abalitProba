@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,11 +32,8 @@ Route::get('/productos/{product}', [ProductController::class, 'show'])->name('si
 Route::get('/productos', [ProductController::class, 'index'])->name('productos');
 
 
+/************************************ RUTAS DE CART  **************************/
 
-//****TODO******/
-/****
- *
- * USAR COMPONENTES DE LIVEWIRE PARA REFACTORIZAR LA APP LO MÁS POSIBLE
- *
- *
- */
+Route::get('/cart', [CartController::class, 'index'])->name('cart');
+
+

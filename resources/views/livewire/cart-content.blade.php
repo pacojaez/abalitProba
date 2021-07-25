@@ -113,13 +113,11 @@
         @endif
     </div>
 </div> --}}
-<div>
-    <div class="container flex flex-row p-2 mx-auto lg:h-full lg:py-4 lg:flex-row lg:items-start lg:space-x-6">
-        @if( count($content) > 0 )
 
+<div>
+    <div class="container flex flex-row p-2 mx-auto lg:h-full lg:py-4 lg:flex-col lg:items-start lg:space-x-6">
         <div class="flex flex-col items-center justify-center w-full lg:w-1/2">
             <!--cart item-->
-            @foreach ($content as $id => $item)
             <div class="flex flex-col items-center justify-center w-full">
                 <div class="flex flex-row items-center justify-center mt-6 md:flex-row">
                     <div
@@ -136,7 +134,41 @@
                     </div>
                 </div>
             </div>
-            @endforeach
+            <hr>
+            <!--cart itam-->
+            <div class="flex flex-col items-center justify-center w-full">
+                <div class="flex flex-row items-center justify-center mt-6 md:flex-row">
+                    <div
+                        class="flex flex-col justify-center my-2 mr-0 transition-all duration-1000 ease-in-out md:mr-2">
+                        <img class="object-cover w-full h-full max-w-2xl rounded-md"
+                            src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=739&q=80"
+                            alt="glasses photo">
+                    </div>
+                    <div
+                        class="flex flex-col justify-center w-full mx-0 my-2 transition-all duration-1000 ease-in-out md:mx-4">
+                        <h3>CHAMPION OUTFIT</h3>
+                        <h4>Units: 1 unidad</h4>
+                        <h4>Price: 30 €</h4>
+                    </div>
+                </div>
+            </div>
+            <!--cart itam-->
+            <div class="flex flex-col items-center justify-center w-full">
+                <div class="flex flex-row items-center justify-center mt-6 md:flex-row">
+                    <div
+                        class="flex flex-col justify-center my-2 mr-0 transition-all duration-1000 ease-in-out md:mr-2">
+                        <img class="object-cover w-full h-full max-w-2xl rounded-md"
+                            src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=739&q=80"
+                            alt="glasses photo">
+                    </div>
+                    <div
+                        class="flex flex-col justify-center w-full mx-0 my-2 transition-all duration-1000 ease-in-out md:mx-4">
+                        <h3>CHAMPION OUTFIT</h3>
+                        <h4>Units: 1 unidad</h4>
+                        <h4>Price: 30 €</h4>
+                    </div>
+                </div>
+            </div>
             <div class="flex flex-row items-center justify-center w-full mt-4 lg:w-1/2">
                 <input type="text" class="border rounded border-3 border-purple">
                 <button
@@ -152,9 +184,6 @@
                 </div>
             </div>
         </div>
-        @else
-        <p class="mb-2 text-3xl text-center font-title">Your Cart is empty!</p>
-        @endif
         <div class="flex flex-col items-center justify-center w-full lg:w-1/2">
             <div class="border border-purple-500 rounded border-3 ">
                 <h2 class="p-4 m-2 text-4xl font-extrabold">TOTAL WEIGHT: 15 KG</h2>

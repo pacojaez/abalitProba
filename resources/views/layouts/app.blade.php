@@ -82,7 +82,7 @@
         @endif
 
         <!-- Page Content -->
-        <main class="flex items-center justify-center w-screen">
+        <main class="flex flex-col items-center justify-center w-screen">
             {{ $slot }}
         </main>
 

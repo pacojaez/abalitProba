@@ -47,9 +47,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show (Product $product)
+    public function show ( $id )
     {
-        return view('single-product')->with('product', $product);
+        //$product = Product::findOrFail($id);
+        return view('single-product',  ['id' => $id]);
     }
 
     /**

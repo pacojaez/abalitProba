@@ -38,6 +38,7 @@ class CartService
      */
     public function add ($id, $name, $price, $quantity, $options = []): void
     {
+        //dd($id);
         $cartItem = $this->createCartItem($name, $price, $quantity, $options, $id);
 
         $content = $this->getContent();

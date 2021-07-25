@@ -27,7 +27,14 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('allproducts');
 // })->name('allproducts');
 
-Route::get('/productos/{product}', [ProductController::class, 'show'])->name('single-product');
+//Route::get('/productos/{product}', [ProductController::class, 'show'])->name('single-product');
+
+//Route::get('/productos/{product}', function($product) {
+//    return view('single-product', ['product' => $product ]);
+//})->name('single-product');
+ Route::get('/productos/{id}', function($id) {
+    return view('single-product', compact('id'));
+})->name('single-product');
 
 Route::get('/productos', [ProductController::class, 'index'])->name('productos');
 

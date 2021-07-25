@@ -27,8 +27,8 @@
                 <div class="w-full lg:w-1/2">
                     <div class="lg:max-w-lg">
                         <h1 class="mt-0 text-4xl font-bold tracking-wide text-purple-800 dark:text-white lg:text-4xl">
-                            CHAMPION
-                            OUTFIT</h1>
+                            {{ $product->name }}
+                        </h1>
                         <hr class="white">
                         <p class="mt-2 font-extrabold text-indigo-600 uppercase dark:text-gray-300">
                             champion outfit | add 30 €
@@ -76,7 +76,7 @@
                                 ADD TO CHART
                             </button>
 
-                            @livewire('add-to-cart')
+                            @livewire('add-to-cart', [ 'product' => $product ])
 
                         </div>
                         <div class="flex items-center justify-end w-full mt-4 mb-0 p-7">

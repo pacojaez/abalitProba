@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use App\Models\Product;
+use App\Facades\Cart;
 
 class AddToCart extends Component
 {
@@ -10,15 +12,12 @@ class AddToCart extends Component
      * Public properties to pass to the view
      */
      public $quantity = 1;
+     public $product;
 
-     public function mount($id){
+     public function mount(Product $product){
 
         $this->quantity;
-        //$this->oferta = Oferta::findOrFail($id);
-        //$this->product = Product::where('id', 'like', $this->oferta->product_id);
-        //$this->subcategorie = Subcategorie::where('id', 'like' , $this->product->subcategorie_id );
-        //$this->category = Categorie::where('id', '=', $this->subcategorie->category_id)->first()->name;
-        //$this->porte = $this->product->porte;
+        $this->product = $product;
 
     }
 
@@ -27,14 +26,16 @@ class AddToCart extends Component
         return view('partials.add-to-cart');
     }
 
-    /**
-     * Adds an item to cart.
-     *
-     * @return void
-     */
+    ///**
+    // * Adds an item to cart.
+    // *
+    // * @return void
+    // */
     public function addToCart(): void
     {
-        Cart::add($this->product->id, $this->product->name, $this->product->getRawOriginal('price'), $this->quantity);
+        //$product = Product::findOrFail($id);
+        //dd($product);
+        Cart::add($this->product->id, $this->product->name, $this->product->price, $this->quantity);
 
         $this->emitTo('nav-cart', 'refresh');
     }

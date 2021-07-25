@@ -163,9 +163,5 @@ class CartContent extends Component
 
         $this->confirmedMessage = true;
 
-
-
-
-
     }
 }

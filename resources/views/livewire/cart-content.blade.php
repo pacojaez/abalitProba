@@ -114,10 +114,11 @@
     </div>
 </div> --}}
 
-<div>
+{{--<div>
     <div class="container flex flex-row p-2 mx-auto lg:h-full lg:py-4 lg:flex-col lg:items-start lg:space-x-6">
         <div class="flex flex-col items-center justify-center w-full lg:w-1/2">
-            <!--cart item-->
+           @if( count($content) > 0 )
+                @foreach ($content as $id => $item)
             <div class="flex flex-col items-center justify-center w-full">
                 <div class="flex flex-row items-center justify-center mt-6 md:flex-row">
                     <div
@@ -128,47 +129,16 @@
                     </div>
                     <div
                         class="flex flex-col justify-center w-full mx-0 my-2 transition-all duration-1000 ease-in-out md:mx-4">
-                        <h3>CHAMPION OUTFIT</h3>
-                        <h4>Units: 1 unidad</h4>
-                        <h4>Price: 30 €</h4>
+                        <h3>{{ $item->get('name') }}</h3>
+                        <h4>Units: {{ $item->get('quantity') }}</h4>
+                        <h4>Price: {{ $item->get('price') }} €</h4>
+                        <h3>SUBTOTAL: {{ $item->get('quantity')*$item->get('price') }} €</h3>
                     </div>
                 </div>
             </div>
-            <hr>
-            <!--cart itam-->
-            <div class="flex flex-col items-center justify-center w-full">
-                <div class="flex flex-row items-center justify-center mt-6 md:flex-row">
-                    <div
-                        class="flex flex-col justify-center my-2 mr-0 transition-all duration-1000 ease-in-out md:mr-2">
-                        <img class="object-cover w-full h-full max-w-2xl rounded-md"
-                            src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=739&q=80"
-                            alt="glasses photo">
-                    </div>
-                    <div
-                        class="flex flex-col justify-center w-full mx-0 my-2 transition-all duration-1000 ease-in-out md:mx-4">
-                        <h3>CHAMPION OUTFIT</h3>
-                        <h4>Units: 1 unidad</h4>
-                        <h4>Price: 30 €</h4>
-                    </div>
-                </div>
-            </div>
-            <!--cart itam-->
-            <div class="flex flex-col items-center justify-center w-full">
-                <div class="flex flex-row items-center justify-center mt-6 md:flex-row">
-                    <div
-                        class="flex flex-col justify-center my-2 mr-0 transition-all duration-1000 ease-in-out md:mr-2">
-                        <img class="object-cover w-full h-full max-w-2xl rounded-md"
-                            src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=739&q=80"
-                            alt="glasses photo">
-                    </div>
-                    <div
-                        class="flex flex-col justify-center w-full mx-0 my-2 transition-all duration-1000 ease-in-out md:mx-4">
-                        <h3>CHAMPION OUTFIT</h3>
-                        <h4>Units: 1 unidad</h4>
-                        <h4>Price: 30 €</h4>
-                    </div>
-                </div>
-            </div>
+            @endforeach
+           @endif
+
             <div class="flex flex-row items-center justify-center w-full mt-4 lg:w-1/2">
                 <input type="text" class="border rounded border-3 border-purple">
                 <button
@@ -179,7 +149,11 @@
             </div>
             <div class="flex flex-row items-center justify-center w-full mt-4">
                 <div class="flex flex-row items-center justify-center w-full">
-                    <h2 class="p-4 m-2 text-2xl font-bold">TOTAL: 35,45 €</h2>
+                    <h2 class="p-4 m-2 text-2xl font-bold">Total:
+                        <span class="mb-2 text-4xl font-title">
+                            {{ $total }}
+                        </span>
+                    €</h2>
                     <h4 class="p-4 m-2 text-sm font-bold">* Shipping is calculated at checkout</h4>
                 </div>
             </div>
@@ -212,4 +186,4 @@
         <span class="ml-2">I agree, no returns, refunds or exchange </span>
       </label>
     </div>
-</div>
+</div>--}}

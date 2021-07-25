@@ -1,4 +1,4 @@
-</div>
+
 <div class="flex">
     <div class="bottom-0 flex w-full pb-5 mt-2">
         <label for="quantity" class="mr-2 text-xl font-extrabold text-gray-500">

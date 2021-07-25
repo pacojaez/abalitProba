@@ -76,6 +76,8 @@
                                 ADD TO CHART
                             </button>
 
+                            @livewire('add-to-cart')
+
                         </div>
                         <div class="flex items-center justify-end w-full mt-4 mb-0 p-7">
                             <p class="font-extrabold text-pink-700">Sustainable Fashion. Saving the Planet styling</p>

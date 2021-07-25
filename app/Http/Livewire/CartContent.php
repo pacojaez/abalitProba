@@ -47,7 +47,7 @@ class CartContent extends Component
     public function render(): View
     {
         // $this->dispatchBrowserEvent('refresh-page');
-        $this->content = [1,2];
+        //$this->content = [1,2];
 
         return view('cart.components.cart-content', [
             'total' => $this->total,

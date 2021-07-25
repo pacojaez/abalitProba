@@ -38,6 +38,10 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function wishlistItem(){
+        return $this->hasMany(WishlistItem::class);
+    }
+
     /************  FUNCTIONS  *********** */
     /**
     * @param string

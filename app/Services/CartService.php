@@ -4,7 +4,7 @@ namespace App\Services;
 
 use Illuminate\Support\Collection;
 use Illuminate\Session\SessionManager;
-
+use App\Models\Product;
 class CartService
 {
     const MINIMUM_QUANTITY = 1;
@@ -36,10 +36,10 @@ class CartService
      * @param array $options
      * @return void
      */
-    public function add ($id, $name, $price, $quantity, $options = []): void
+    public function add ($id, $name, $price, $quantity, $product, $options = []): void
     {
         //dd($id);
-        $cartItem = $this->createCartItem($name, $price, $quantity, $options, $id);
+        $cartItem = $this->createCartItem($name, $price, $quantity, $options, $id, $product);
 
         $content = $this->getContent();
         // dd($content);
@@ -188,9 +188,10 @@ class CartService
      * @param string $price
      * @param string $quantity
      * @param array $options
+     * @param Product $product
      * @return Illuminate\Support\Collection
      */
-    protected function createCartItem(string $name, string $price, string $quantity, array $options, string $id): Collection
+    protected function createCartItem(string $name, string $price, string $quantity, array $options, string $id, Product $product): Collection
     {
         $price = floatval($price);
         $quantity = intval($quantity);
@@ -204,7 +205,8 @@ class CartService
             'price' => $price,
             'quantity' => $quantity,
             'options' => $options,
-            'id' => $id
+            'id' => $id,
+            'product' =>$product
         ]);
 
         $this->items();

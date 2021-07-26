@@ -8,6 +8,7 @@ use App\Models\OrderItem;
 use Livewire\Component;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Product;
 
 use App\Http\Controllers\SendEMailController;
 
@@ -17,7 +18,7 @@ class CartContent extends Component
     protected $content;
     protected $orderItem;
     protected $newOrder;
-    protected $oferta_id;
+    protected $product;
 
     // public $abandoned = false;  Property to remarketing TODO
 
@@ -34,6 +35,9 @@ class CartContent extends Component
      */
     public function mount(): void
     {
+
+        // dd(Cart::content());
+        // $this->product = Product::findOrFail(Cart::items('id'));
         $this->confirmedMessage = false;
         $this->abandoned = false;
         $this->updateCart();
@@ -46,13 +50,12 @@ class CartContent extends Component
      */
     public function render(): View
     {
-        // $this->dispatchBrowserEvent('refresh-page');
-        //$this->content = [1,2];
 
         return view('cart.components.cart-content', [
             'total' => $this->total,
             'content' => $this->content,
-            // 'abandoned' => $this->abandoned,   Property to remarketing TODO
+            // 'product' => $this->product,
+            //'abandoned' => $this->abandoned,   Property to remarketing TODO
         ]);
     }
 

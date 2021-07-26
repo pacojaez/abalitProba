@@ -119,23 +119,25 @@
         <div class="flex flex-col items-center justify-center w-full lg:w-1/2">
            @if( count($content) > 0 )
                 @foreach ($content as $id => $item)
-            <div class="flex flex-col items-center justify-center w-full">
-                <div class="flex flex-row items-center justify-center mt-6 md:flex-row">
-                    <div
-                        class="flex flex-col justify-center my-2 mr-0 transition-all duration-1000 ease-in-out md:mr-2">
-                        <img class="object-cover w-full h-full max-w-2xl rounded-md"
-                            src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=739&q=80"
-                            alt="glasses photo">
-                    </div>
-                    <div
-                        class="flex flex-col justify-center w-full mx-0 my-2 transition-all duration-1000 ease-in-out md:mx-4">
-                        <h3>{{ $item->get('name') }}</h3>
-                        <h4>Units: {{ $item->get('quantity') }}</h4>
-                        <h4>Price: {{ $item->get('price') }} €</h4>
-                        <h3>SUBTOTAL: {{ $item->get('quantity')*$item->get('price') }} €</h3>
+                <div class="flex flex-col items-center justify-center w-full">
+                    <div class="flex flex-row items-center justify-center mt-6 md:flex-row">
+                        @if($item->get('product'))
+                        <div
+                            class="flex flex-col justify-center my-2 mr-0 transition-all duration-1000 ease-in-out md:mr-2">
+                            <img class="object-cover w-full h-full max-w-2xl rounded-md"
+                            src="{{asset('storage/images/'.$item->get('product')->image)}}"
+                            alt="{{ $item->get('product')->name }}" >
+                        </div>
+                        @endif
+                        <div
+                            class="flex flex-col justify-center w-full mx-0 my-2 transition-all duration-1000 ease-in-out md:mx-4">
+                            <h3>{{ $item->get('name') }}</h3>
+                            <h4>Units: {{ $item->get('quantity') }}</h4>
+                            <h4>Price: {{ $item->get('price') }} €</h4>
+                            <h3>SUBTOTAL: {{ $item->get('quantity')*$item->get('price') }} €</h3>
+                        </div>
                     </div>
                 </div>
-            </div>
             @endforeach
            @endif
 
@@ -159,7 +161,7 @@
             </div>
         </div>
         <div class="flex flex-col items-center justify-center w-full lg:w-1/2">
-            <div class="border border-purple-500 rounded border-3 hidden lg:visible">
+            <div class="hidden border border-purple-500 rounded border-3 lg:visible">
                 <h2 class="p-4 m-2 text-4xl font-extrabold">TOTAL WEIGHT: 15 KG</h2>
             </div>
             <div class="mt-4 ">

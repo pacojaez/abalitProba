@@ -3,8 +3,8 @@
         class="container flex flex-col p-2 mx-auto lg:h-full lg:py-4 lg:flex-row lg:items-start lg:space-x-6">
         <div class="flex flex-col items-center justify-center w-full lg:w-1/2">
             <img class="object-cover w-full h-full max-w-2xl rounded-md"
-                src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=739&q=80"
-                alt="glasses photo">
+            src="{{asset('storage/images/'.$product->image)}}"
+            alt="{{ $product->name }}" >
 
             <div class="flex flex-row items-center justify-center mt-6 md:flex-row">
                 <div

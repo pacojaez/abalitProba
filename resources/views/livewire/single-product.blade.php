@@ -1,11 +1,11 @@
-<div class="mx-2 my-2 bg-pink-200 w-5/6">
+<div class="w-5/6 mx-2 my-2 bg-pink-200">
     <div class="container flex flex-row px-6 py-12 mx-auto lg:h-full lg:py-16 lg:flex-row lg:items-center lg:space-x-6">
         <div class="flex flex-col items-center justify-center w-full">
             <div class="flex flex-col items-center justify-center">
                 <div class="p-2 mt-0">
                     <img class="object-cover h-full max-w-xl rounded-md"
-                    src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=739&q=80"
-                    alt="glasses photo">
+                    src="{{asset('storage/images/'.$product->image)}}"
+                alt="{{ $product->name }}" >
                 </div>
                 <div class="w-full lg:w-1/2">
                     <div class="lg:max-w-lg">
@@ -54,10 +54,10 @@
                                 class="px-4 py-2 mx-4 font-bold text-gray-200 bg-pink-400 border border-pink-500 rounded W-1/2 hover:bg-pink-500 hover:text-white hover:border-transparent hover:shadow-xl">
                                 ADD TO WISHLIST
                             </button>
-                            <button type="button"
+                            {{-- <button type="button"
                                 class="px-4 py-2 mx-4 font-bold text-gray-200 bg-purple-400 border border-purple-900 rounded W-1/2 hover:bg-purple-700 hover:text-white hover:border-transparent hover:shadow-xl">
                                 ADD TO CHART
-                            </button>
+                            </button> --}}
 
                             @livewire('add-to-cart', [ 'product' => $product ])
 

@@ -1,13 +1,34 @@
-<div class="w-5/6 mx-2 my-2 bg-pink-200">
-    <div class="container flex flex-row px-6 py-12 mx-auto lg:h-full lg:py-16 lg:flex-row lg:items-center lg:space-x-6">
-        <div class="flex flex-col items-center justify-center w-full">
-            <div class="flex flex-col items-center justify-center">
+<div class="flex flex-wrap mt-8 -mx-1 overflow-hidden bg-pink-200 sm:-mx-3 lg:-mx-2 xl:-mx-2">
+    <div class="w-full px-1 mx-4 my-1 overflow-hidden sm:my-3 sm:px-3 sm:w-full lg:my-2 lg:px-2 xl:my-2 xl:px-2">
+        <div class="flex flex-wrap overflow-hidden sm:-mx-3 xl:-mx-2">
+            <div class="w-full overflow-hidden sm:my-3 sm:px-3 sm:w-1/2 xl:my-2 xl:px-2 xl:w-1/2">
                 <div class="p-2 mt-0">
+                    <div class="object-cover h-full max-w-xl rounded-md">
+                        <img src="{{ asset('storage/images/'.$product->image )}}"
+                        alt="{{ $product->name }}" />
+                    </div>
                     <img class="object-cover h-full max-w-xl rounded-md"
-                    src="{{asset('storage/images/'.$product->image)}}"
-                alt="{{ $product->name }}" >
+                    src="{{ asset('storage/images/'.$product->image )}}"
+                    alt="{{ $product->name }}" />
                 </div>
-                <div class="w-full lg:w-1/2">
+                <div class="flex flex-col justify-start my-6 mr-0 transition-all duration-1000 ease-in-out md:mr-2">
+                    <ol>
+                        <li class="text-xs font-extrabold text-purple-700 list-disc">PLEASE CHECK THE PRICE</li>
+                        <li class="text-xs font-extrabold text-purple-700 list-disc">VINTAGE CLOTHING IS USED
+                            CLOTHING
+                        </li>
+                        <li class="text-xs font-extrabold text-purple-700 list-disc">WE DON´T ACCEPT RETURNS OR
+                            EXCHANGES</li>
+                        <li class="text-xs font-extrabold text-purple-700 list-disc">ALL CLOTHES ARE SANITIZED AND
+                            IRONED (EXCEPT WHOLESALE CLOTHES)</li>
+                        <li class="text-xs font-extrabold text-purple-700 list-disc">IF YOU HAVE ANY QUESTION PLEASE
+                            CONTACT US BEFORE BUYING AND WE´LL HELP YOU</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="w-full overflow-hidden sm:my-3 sm:px-3 sm:w-1/2 xl:my-2 xl:px-2 xl:w-1/2">
+                <div class="w-full lg:w-full ">
                     <div class="lg:max-w-lg">
                         <h1 class="mt-0 text-4xl font-bold tracking-wide text-purple-800 dark:text-white lg:text-4xl">
                             {{ $product->name }}
@@ -26,8 +47,6 @@
                             class="grid gap-6 p-4 mt-4 bg-pink-600 border-2 border-purple-300 rounded-md sm:grid-cols-2 ">
                             <div class="flex items-center space-x-6 text-gray-800 dark:text-gray-200">
                                 <span calss="font-extrabold text-xl text-purple-700">MEASURES</span>
-                            </div>
-                            <div>
                             </div>
                             <div class="flex items-center justify-start space-x-6 text-gray-800 dark:text-gray-200">
                                 <span class="justify-start">Garnet Nylon Jaquet</span>
@@ -50,14 +69,7 @@
                             </div>
                         </div>
                         <div class="flex items-center justify-center w-full mx-4 p-7">
-                            {{-- <button type="button" onclick="modalClose('mymodalcentered')"
-                                class="px-4 py-2 mx-4 font-bold text-gray-200 bg-pink-400 border border-pink-500 rounded W-1/2 hover:bg-pink-500 hover:text-white hover:border-transparent hover:shadow-xl">
-                                ADD TO WISHLIST
-                            </button> --}}
-                            {{-- <button type="button"
-                                class="px-4 py-2 mx-4 font-bold text-gray-200 bg-purple-400 border border-purple-900 rounded W-1/2 hover:bg-purple-700 hover:text-white hover:border-transparent hover:shadow-xl">
-                                ADD TO CHART
-                            </button> --}}
+
                             @livewire('add-to-wishlist', [ 'product' => $product ])
                             @livewire('add-to-cart', [ 'product' => $product ])
 
@@ -75,27 +87,17 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col items-center justify-center w-full lg:w-1/2">
-                <div class="flex flex-col items-start justify-start mt-6 md:flex-row">
 
-                    <div class="flex flex-col justify-start my-6 mr-0 transition-all duration-1000 ease-in-out md:mr-2">
-                        <ol>
-                            <li class="text-xs font-extrabold text-purple-700 list-disc">PLEASE CHECK THE PRICE</li>
-                            <li class="text-xs font-extrabold text-purple-700 list-disc">VINTAGE CLOTHING IS USED
-                                CLOTHING
-                            </li>
-                            <li class="text-xs font-extrabold text-purple-700 list-disc">WE DON´T ACCEPT RETURNS OR
-                                EXCHANGES</li>
-                            <li class="text-xs font-extrabold text-purple-700 list-disc">ALL CLOTHES ARE SANITIZED AND
-                                IRONED (EXCEPT WHOLESALE CLOTHES)</li>
-                            <li class="text-xs font-extrabold text-purple-700 list-disc">IF YOU HAVE ANY QUESTION PLEASE
-                                CONTACT US BEFORE BUYING AND WE´LL HELP YOU</li>
-                        </ol>
-                    </div>
-
-
-                </div>
-            </div>
         </div>
     </div>
+
+    <div class="w-full px-1 my-1 overflow-hidden sm:my-3 sm:px-3 sm:w-full lg:my-2 lg:px-2 xl:my-2 xl:px-2">
+       @include('product.product-section')
+    </div>
+
+    <div class="w-full px-1 my-1 overflow-hidden sm:my-3 sm:px-3 sm:w-full lg:my-2 lg:px-2 xl:my-2 xl:px-2">
+        @include('product.product-youmayalsolike')
+        @livewire('product-carrousel')
+    </div>
+
 </div>

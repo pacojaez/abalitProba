@@ -25,8 +25,8 @@ class Order extends Model
          return $this->belongsTo( User::class);
     }
 
-    public function lineapedido(){
-        return $this->hasMany(lineapedido::class);
+    public function orderItem(){
+        return $this->hasMany(OrderItem::class);
     }
 
     public function product(){

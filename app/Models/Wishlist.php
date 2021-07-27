@@ -16,7 +16,7 @@ class Wishlist extends Model
      */
     protected $fillable = [
         'user_id',
-
+        'product_id',
     ];
 
      /**
@@ -29,5 +29,9 @@ class Wishlist extends Model
 
     public function wishlistItem(){
         return $this->hasMany(WishlistItem::class);
+    }
+
+    public function product(){
+        return $this->hasMany(Product::class);
     }
 }

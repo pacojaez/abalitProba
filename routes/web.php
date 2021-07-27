@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\WishlistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,5 +49,9 @@ Route::get('category/{id}', function($id) {
 /************************************ RUTAS DE CART  **************************/
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
+
+/************************************ RUTAS DE CART  **************************/
+
+Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
 
 

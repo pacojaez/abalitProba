@@ -38,6 +38,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::get('/productos', [ProductController::class, 'index'])->name('productos');
 
+Route::get('/productos/category/{id}', [ProductController::class, 'category'])->name('productos_category');
+
+Route::get('category/{id}', function($id) {
+    return view('allproductscategory', compact('id'));
+})->name('categoryproducts');
+
 
 /************************************ RUTAS DE CART  **************************/
 

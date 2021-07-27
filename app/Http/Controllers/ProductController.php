@@ -19,6 +19,18 @@ class ProductController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function category ( $id )
+    {
+        // $products = Product::where('category_id', 'like', $id)->get();
+        // dd($products);
+        return view('allproductscategory')->with('id', $id);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

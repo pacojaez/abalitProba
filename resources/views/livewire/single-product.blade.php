@@ -50,15 +50,15 @@
                             </div>
                         </div>
                         <div class="flex items-center justify-center w-full mx-4 p-7">
-                            <button type="button" onclick="modalClose('mymodalcentered')"
+                            {{-- <button type="button" onclick="modalClose('mymodalcentered')"
                                 class="px-4 py-2 mx-4 font-bold text-gray-200 bg-pink-400 border border-pink-500 rounded W-1/2 hover:bg-pink-500 hover:text-white hover:border-transparent hover:shadow-xl">
                                 ADD TO WISHLIST
-                            </button>
+                            </button> --}}
                             {{-- <button type="button"
                                 class="px-4 py-2 mx-4 font-bold text-gray-200 bg-purple-400 border border-purple-900 rounded W-1/2 hover:bg-purple-700 hover:text-white hover:border-transparent hover:shadow-xl">
                                 ADD TO CHART
                             </button> --}}
-
+                            @livewire('add-to-wishlist', [ 'product' => $product ])
                             @livewire('add-to-cart', [ 'product' => $product ])
 
                         </div>

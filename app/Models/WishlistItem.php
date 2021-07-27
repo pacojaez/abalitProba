@@ -9,6 +9,12 @@ class WishlistItem extends Model
 {
     use HasFactory;
 
+    public $fillable = [
+        'user_id',
+        'product_id',
+        'wishlist_id'
+    ];
+
     /**
      * RELATIONS
      */

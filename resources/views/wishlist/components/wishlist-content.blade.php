@@ -9,7 +9,7 @@
             <div class="p-4 m-4 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6">
                 <a href="{{ route('single-product', ['id' => $wishlist->product_id ]) }}">
                     <img class="object-cover object-center h-48 mx-auto rounded-lg"
-                        src="{{asset('storage/images/'.$wishlist->product->image)}}" alt="{{ $wishlist->product->name }}" />
+                        src="{{ asset('storage/images/'.$wishlist->product->image) }}" alt="{{ $wishlist->product->name }}" />
                 </a>
             </div>
             @livewire('add-to-cart', [ 'product' => $wishlist->product ])

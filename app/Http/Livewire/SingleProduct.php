@@ -4,11 +4,14 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Product;
-
+use App\Models\WishlistItem;
+use Illuminate\Support\Facades\Auth;
 class SingleProduct extends Component
 {
     public $product;
     public $quantity = 1;
+
+    protected $listeners = ['addProductToWishlist' => 'addNewWishlistProduct'];
 
     public function mount( $id ){
         //dd($product);
@@ -23,16 +26,22 @@ class SingleProduct extends Component
         ]);
     }
 
-     /**
-     * Adds an item to cart.
+    /**
+     * Adds an item to wishlist.
      *
      * @return void
      */
-    //public function addToCart( $id ): void
-    //{
-    //    $this->product = Product::findOrFail($id);
-    //    Cart::add($this->product->id, $this->product->name, $this->product->price, $this->quantity);
+    public function addNewWishlistProduct(  ){
 
-    //    $this->emitTo('nav-cart', 'refresh');
-    //}
+        $user = Auth::user()->id;
+        $new = WishlistItem::create([
+            'user_id' => $user,
+            'product_id' => $this->product->id,
+            'wishlist_id' => null
+        ]);
+
+        $this->emitTo('nav-wishlist', 'refresh');
+
+    }
+
 }

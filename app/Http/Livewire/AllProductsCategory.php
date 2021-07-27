@@ -24,6 +24,7 @@ class AllProductsCategory extends Component
 
     public function mount( $id ){
         $this->_id = $id;
+        // dd($this->_id);
         $this->products = Product::where('category_id', '=', $this->_id)->paginate( 10 );
     }
 
@@ -38,7 +39,8 @@ class AllProductsCategory extends Component
         // ->paginate(10);
 
         return view('livewire.allproductscategory', [
-            'products' => $this->products
+            'products' => $this->products,
+            'id' => $this->_id,
         ]);
     }
 

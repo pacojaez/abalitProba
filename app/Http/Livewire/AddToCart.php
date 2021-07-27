@@ -33,8 +33,8 @@ class AddToCart extends Component
     // */
     public function addToCart(): void
     {
-
-        Cart::add($this->product->id, $this->product->name, $this->product->price, $this->quantity, $this->product);
+        $options = [];
+        Cart::add($this->product->name, $this->product->price, $this->quantity, $options, $this->product->id,  $this->product->weight, $this->product);
 
         $this->emitTo('nav-cart', 'refresh');
     }

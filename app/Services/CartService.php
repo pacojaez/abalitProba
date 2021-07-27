@@ -34,12 +34,15 @@ class CartService
      * @param string $price
      * @param string $quantity
      * @param array $options
+     * @param string $id
+     * @param string $weight
+     * @param Product $product
      * @return void
      */
-    public function add ($id, $name, $price, $quantity, $product, $options = []): void
+    public function add ($name, $price, $quantity, $options, $id, $weight, $product ): void
     {
         //dd($id);
-        $cartItem = $this->createCartItem($name, $price, $quantity, $options, $id, $product);
+        $cartItem = $this->createCartItem($name, $price, $quantity, $options, $id, $weight, $product);
 
         $content = $this->getContent();
         // dd($content);
@@ -172,6 +175,28 @@ class CartService
     }
 
     /**
+     * Returns total weight of the items in the cart.
+     *
+     * @return string
+     */
+    public function weight(): string
+    {
+        $content = $this->getContent();
+
+        $this->items = $content->reduce(function ($quantity, $item ){
+            return $quantity += $item->get('quantity');
+        });
+
+        // dd('items: '.$items);
+
+        $weight = $content->reduce(function ($weight, $item) {
+            return $weight += $item->get('weight') * $item->get('quantity');
+        });
+
+        return number_format($weight, 2);
+    }
+
+    /**
      * Returns the content of the cart.
      *
      * @return Illuminate\Support\Collection
@@ -188,13 +213,16 @@ class CartService
      * @param string $price
      * @param string $quantity
      * @param array $options
+     * @param string $id
+     * @param string $weight
      * @param Product $product
      * @return Illuminate\Support\Collection
      */
-    protected function createCartItem(string $name, string $price, string $quantity, array $options, string $id, Product $product): Collection
+    protected function createCartItem(string $name, string $price, string $quantity, array $options, string $id, string $weight, Product $product): Collection
     {
         $price = floatval($price);
         $quantity = intval($quantity);
+        $weight = floatval($weight);
 
         if ($quantity < self::MINIMUM_QUANTITY) {
             $quantity = self::MINIMUM_QUANTITY;
@@ -206,7 +234,9 @@ class CartService
             'quantity' => $quantity,
             'options' => $options,
             'id' => $id,
-            'product' =>$product
+            'weight' => $weight,
+            'product' =>$product,
+
         ]);
 
         $this->items();

@@ -19,6 +19,7 @@ class CartContent extends Component
     protected $orderItem;
     protected $newOrder;
     protected $product;
+    protected $totalWeight;
 
     // public $abandoned = false;  Property to remarketing TODO
 
@@ -35,7 +36,7 @@ class CartContent extends Component
      */
     public function mount(): void
     {
-
+        $this->totalWeight = Cart::weight();
         // dd(Cart::content());
         // $this->product = Product::findOrFail(Cart::items('id'));
         $this->confirmedMessage = false;
@@ -54,6 +55,7 @@ class CartContent extends Component
         return view('cart.components.cart-content', [
             'total' => $this->total,
             'content' => $this->content,
+            'totalWeight' => $this->totalWeight,
             // 'product' => $this->product,
             //'abandoned' => $this->abandoned,   Property to remarketing TODO
         ]);
@@ -111,6 +113,7 @@ class CartContent extends Component
     {
 
         $this->total = Cart::total();
+        $this->totalWeight = Cart::weight();
         $this->content = Cart::content();
         $this->emitTo('nav-cart', 'refresh');
 
@@ -119,8 +122,9 @@ class CartContent extends Component
 
     public function checkOut()
     {
+
         $user_id = Auth::user()->id;
-        $userEmail = Auth::user()->email;
+        $adress = Auth::user()->adress;
         $total_units = Cart::items();
 
         //Recogemos los valores del Cart en variables para poder generar un nuevo registro en la DB
@@ -132,10 +136,14 @@ class CartContent extends Component
         //Crear una nueva Order para obtner el id y poder referenciar cada OrderItem a él
 
         $this->newOrder = Order::create([
-            'status' => 'Pendiente de confirmación',
+            // 'status' => 'Pendiente de confirmación',     //ADD NEXT SPRINT
             'user_id' => $user_id,
-            'units' => $total_units,
-            'total_factura' => $this->total
+            // 'units' => $total_units,                     //ADD NEXT SPRINT
+            'total' => $this->total,
+            'payment_type' => 'VISA',
+            'pick_up_day' => '2021-08-15',
+            'pick_up_time' => '15:00:00',
+            'adress' => $adress,
         ]);
 
         //crear cada OrderItem en la DB
@@ -143,12 +151,12 @@ class CartContent extends Component
 
             OrderItem::create([
                 'order_id' => $this->newOrder->id,
-                'units' => $value['quantity'],
-                'total_items' => $value['quantity'],
-                'unit_price' => $value['price'],
+                'quantity' => $value['quantity'],
+                // 'total_items' => $value['quantity'],     //ADD NEXT SPRINT
+                // 'unit_price' => $value['price'],         //ADD NEXT SPRINT
                 'user_id' => $user_id,
                 'subtotal' => $value['quantity'] * $value['price'],
-                'oferta_id' => $key,
+                'product_id' => $key,
            ]);
         };
         //borrar el carrito tras la confirmacion de que se ha creado

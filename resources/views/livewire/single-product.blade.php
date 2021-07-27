@@ -1,16 +1,27 @@
-<div class="flex flex-wrap mt-8 -mx-1 overflow-hidden bg-pink-200 sm:-mx-3 lg:-mx-2 xl:-mx-2">
-    <div class="w-full px-1 mx-4 my-1 overflow-hidden sm:my-3 sm:px-3 sm:w-full lg:my-2 lg:px-2 xl:my-2 xl:px-2">
-        <div class="flex flex-wrap overflow-hidden sm:-mx-3 xl:-mx-2">
-            <div class="w-full overflow-hidden sm:my-3 sm:px-3 sm:w-1/2 xl:my-2 xl:px-2 xl:w-1/2">
-                <div class="p-2 mt-0">
-                    <div class="object-cover h-full max-w-xl rounded-md">
-                        <img src="{{ asset('storage/images/'.$product->image )}}"
-                        alt="{{ $product->name }}" />
+<div class="flex flex-wrap mt-8 -mx-1 bg-pink-200 sm:-mx-3 lg:-mx-2 xl:-mx-2">
+    {{-- @livewire('breadcrumbs', ['id' => $product->category->id]) --}}
+    <div class="w-full px-1 mx-4 my-1 sm:my-3 sm:px-3 sm:w-full lg:my-2 lg:px-2 xl:my-2 xl:px-2">
+        <div class="flex flex-row flex-wrap sm:-mx-3 xl:-mx-2">
+            <div class="flex flex-col flex-wrap w-full bg-green-200 sm:my-3 sm:px-3 sm:w-1/2 xl:my-2 xl:px-2 xl:w-1/2">
+                {{-- <div class="p-2 mt-0"> --}}
+                    <div class="px-8 rounded-lg"
+                    style="background: url({{ asset('storage/images/'.$product->image) }});
+                    background-repeat: no-repeat;
+                    background-size: 300px 300px; ">
                     </div>
-                    <img class="object-cover h-full max-w-xl rounded-md"
+                    {{-- <div class="max-w-xl rounded-md">
+                        <img src="{{ asset('/storage/images/'.$product->image )}}"
+                        alt="{{ $product->name }}" />
+                    </div> --}}
+                    <a href="{{ route('single-product', ['id' => $product->id ]) }}">
+                        <img class="object-cover object-center h-48 mx-auto rounded-lg"
+                        src="{{asset('storage/images/'.$product->image)}}"
+                            alt="{{ $product->name }}" />
+                    </a>
+                    {{-- <img class="object-cover h-full max-w-xl rounded-md"
                     src="{{ asset('storage/images/'.$product->image )}}"
-                    alt="{{ $product->name }}" />
-                </div>
+                    alt="{{ $product->name }}" /> --}}
+                {{-- </div> --}}
                 <div class="flex flex-col justify-start my-6 mr-0 transition-all duration-1000 ease-in-out md:mr-2">
                     <ol>
                         <li class="text-xs font-extrabold text-purple-700 list-disc">PLEASE CHECK THE PRICE</li>

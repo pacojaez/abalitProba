@@ -16,7 +16,7 @@ class SingleProduct extends Component
     public function mount( $id ){
         //dd($product);
         $this->product = Product::findOrFail($id);
-        //dd($this->product);
+        // dd($this->product);
     }
 
     public function render()
@@ -37,7 +37,7 @@ class SingleProduct extends Component
         $new = WishlistItem::create([
             'user_id' => $user,
             'product_id' => $this->product->id,
-            'wishlist_id' => null
+            'wishlist_id' => null,
         ]);
 
         $this->emitTo('nav-wishlist', 'refresh');

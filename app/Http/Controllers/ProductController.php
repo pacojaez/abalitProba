@@ -61,7 +61,8 @@ class ProductController extends Controller
      */
     public function show ( $id )
     {
-        //$product = Product::findOrFail($id);
+        // $product = Product::findOrFail($id);
+        // dd($product);
         return view('single-product',  ['id' => $id]);
     }
 

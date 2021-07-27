@@ -1,4 +1,4 @@
 <x-app-layout>
-    @livewire('single-product', ['id'=>$id])
-     {{--@livewire('single-oferta-card', ['id' => $id])--}}
+    {{-- @livewire('breadcrumbs', ['id'=>$product->category->id]) --}}
+    @livewire('single-product', ['id'=> $id])
 </x-app-layout>

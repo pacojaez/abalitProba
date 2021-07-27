@@ -19,7 +19,6 @@ class WishlistContent extends Component
 
         $user_id = Auth::user()->id;
         $this->wishlistProducts = WishlistItem::where('user_id', 'like', $user_id)->get();
-        // dd($this->wishlistProducts);
     }
     public function render()
     {

@@ -1,24 +1,49 @@
 <div class="h-full">
-    <div class="container flex flex-col p-2 md:flex-row lg:h-full lg:py-4 lg:items-center lg:justify-center lg:space-x-8">
+    <div
+        class="flex flex-col p-2 md:flex-col lg:h-full lg:py-4 lg:items-center lg:justify-center lg:space-x-8">
         THIS IS YOUR WISHLIST
     </div>
     @if( count($wishlistProducts) > 0 )
-    <div class="container flex flex-row p-2 md:flex-row lg:h-full lg:py-4 lg:items-start lg:space-x-8">
+    <div class="flex flex-col items-center justify-center w-full p-2">
+        <div class="flex flex-col items-center justify-center mt-6 md:flex-col">
+            @foreach ( $wishlistProducts as $content )
+            <div class="flex flex-wrap mx-6 overflow-hidden sm:-mx-24 md:-mx-3 lg:mx-2 lg:w-1/2">
+                <div class="w-1/3 px-6 my-6 overflow-hidden sm:my-24 sm:px-24 sm:w-1/3 md:my-3 md:px-3 md:w-1/2 lg:my-2 lg:px-2 lg:w-2/3 xl:w-1/2">
+                    <img class="object-cover w-1/2 max-w-2xl rounded-md h-1/2"
+                    src="{{asset('storage/images/'.$content->product->image)}}"
+                    alt="{{ $content->product->name }}">
+                </div>
+                <div class="w-1/3 px-6 my-6 overflow-hidden sm:my-24 sm:px-24 sm:w-1/3 md:my-3 md:px-3 md:w-1/2 lg:my-2 lg:px-2 lg:w-1/3 xl:w-1/2">
+                    <div class="flex flex-col justify-center w-full mx-0 my-2 transition-all duration-1000 ease-in-out md:mx-4">
+                        <h3>{{ $content->product->name }}</h3>
+                        {{-- <h4>Units: {{ $item->get('quantity') }}</h4> --}}
+                        <h4>Price: {{$content->product->price }} €</h4>
+                        <h3>WEIGHT: {{ $content->product->weight }} Kgs</h3>
+                        {{-- <h3>SUBTOTAL: {{ $item->get('quantity')*$item->get('price') }} €</h3> --}}
+                        @livewire('add-to-cart', [ 'product' => $content->product ])
+                    </div>
+                </div>
+              </div>
+            @endforeach
+        </div>
+    </div>
+    <hr>
+    {{-- <div class="container flex flex-row p-2 md:flex-row lg:h-full lg:py-4 lg:items-start lg:space-x-8">
         <div class="flex flex-row items-center justify-center w-full p-2 lg:w-1/2">
             @foreach ($wishlistProducts as $wishlist)
             <div class="p-4 m-4 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6">
                 <a href="{{ route('single-product', ['id' => $wishlist->product_id ]) }}">
-                    <img class="object-cover object-center h-48 mx-auto rounded-lg"
-                        src="{{ asset('storage/images/'.$wishlist->product->image) }}" alt="{{ $wishlist->product->name }}" />
-                </a>
-            </div>
-            @livewire('add-to-cart', [ 'product' => $wishlist->product ])
-            @endforeach
-        </div>
-    </div>
-    @else
-    <p>YOU HAVEN`T ADDED ANY PRODUCT TO YOUR WISHLIST </p>
-    @endif
+    <img class="object-cover object-center h-48 mx-auto rounded-lg"
+        src="{{ asset('storage/images/'.$wishlist->product->image) }}" alt="{{ $wishlist->product->name }}" />
+    </a>
+</div>
+@livewire('add-to-cart', [ 'product' => $wishlist->product ])
+@endforeach
+</div>
+</div> --}}
+@else
+<p>YOU HAVEN`T ADDED ANY PRODUCT TO YOUR WISHLIST </p>
+@endif
 </div>
 
 

@@ -67,7 +67,7 @@
 
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased bg-pink-200">
     {{-- <x-jet-banner /> --}}
 
     <div class="min-h-screen">

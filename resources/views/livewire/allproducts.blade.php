@@ -1,4 +1,4 @@
-<div class="flex flex-col justify-center">
+<div class="flex flex-col justify-center m-0 bg-pink-200">
     <div class="container flex flex-col flex-wrap justify-center w-full p-2 md:flex-row lg:py-4 lg:space-x-8">
         @foreach ( $products as $product )
         <div class="w-1/3 md:w-full">

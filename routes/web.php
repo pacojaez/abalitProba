@@ -5,17 +5,6 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\WishlistController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
@@ -24,15 +13,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-// Route::get('/productos', function() {
-//     return view('allproducts');
-// })->name('allproducts');
+/************************************ RUTAS DE PRODUCTS  **************************/
 
-//Route::get('/productos/{product}', [ProductController::class, 'show'])->name('single-product');
-
-//Route::get('/productos/{product}', function($product) {
-//    return view('single-product', ['product' => $product ]);
-//})->name('single-product');
  Route::get('/productos/{id}', function($id) {
     return view('single-product', compact('id'));
 })->name('single-product');
@@ -45,8 +27,16 @@ Route::get('category/{id}', function($id) {
     return view('allproductscategory', compact('id'));
 })->name('categoryproducts');
 
+
+/********************ADMIN ROUTES  TODO********************************/
+// Route::group(['prefix' => 'admin',  'middleware' => 'isAdmin'], function(){
+//     Route::get('/productos', [ProductController::class, 'adminIndex'])->name('admin-productos');
+//     Route::get('/productos/show/{id}', [ProductController::class, 'adminShow'])->name('admin-productos-show');
+// });
+
 Route::get('/admin/productos', [ProductController::class, 'adminIndex'])->name('admin-productos');
 Route::get('/admin/productos/show/{id}', [ProductController::class, 'adminShow'])->name('admin-productos-show');
+
 
 /************************************ RUTAS DE CART  **************************/
 

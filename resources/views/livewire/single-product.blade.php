@@ -80,8 +80,24 @@
                             </div>
                         </div>
                         <div class="flex items-center justify-center w-full mx-4 p-7">
+                            @if(Auth::user())
+                                @livewire('add-to-wishlist', [ 'product' => $product ])
+                            @else
+                            <div class="flex flex-col items-center justify-center max-w-full p-2 mx-2 text-center border-2 rounded">
+                                <h4 class="text-center font-base">Must be logged to add a Product to the Wishlist</h4>
+                                <div class="max-w-full p-5 mx-2 my-2 text-center rounded">
+                                    <x-jet-nav-link href="{{ route('register') }}"
+                                        class="px-2 py-3 m-2 text-lg font-semibold text-white uppercase transition-all duration-150 ease-linear bg-purple-500 rounded shadow-md outline-none active:bg-purple-600 hover:shadow-lg focus:outline-none">
+                                        <span class="text-lg text-white">{{ __('REGISTER') }}</span>
+                                    </x-jet-nav-link>
+                                    <x-jet-nav-link href="{{ route('login') }}"
+                                        class="px-8 py-3 m-2 text-base font-bold text-white uppercase transition-all duration-150 ease-linear bg-purple-500 rounded shadow-md outline-none active:bg-purple-600 hover:shadow-lg focus:outline-none">
+                                        <span class="text-lg text-white">{{ __('LOGIN') }}</span>
+                                    </x-jet-nav-link>
+                                </div>
+                            </div>
+                            @endif
 
-                            @livewire('add-to-wishlist', [ 'product' => $product ])
                             @livewire('add-to-cart', [ 'product' => $product ])
 
                         </div>

@@ -31,8 +31,10 @@
                     placeholder="Search" />
             </div>
             <div class="flex flex-col px-2 py-3 -mx-4 md:flex-row md:mx-0 md:py-0">
-
+                @if(Auth::user())
                     @livewire('nav-wishlist')
+                @endif
+
                     @livewire('nav-cart')
 
                 @if(Auth::user())

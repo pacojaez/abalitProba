@@ -1,10 +1,8 @@
 <x-jet-nav-link href="{{ route('wishlist') }}" class="m-5 text-lg text-red-600 font-title">
-    <div
-        @class([
-            'flex', 'flex-row', 'px-2', 'py-1', 'text-sm', 'font-medium', 'transition-colors', 'duration-200', 'transform', 'rounded dark:text-gray-200',
-            'hover:bg-gray-900', 'hover:text-gray-100 md:mx-2',
-            'text-red-500' => $hasWishlist ,
-            'text-gray-200' => $noHasWishlist,
+    <div @class([ 'flex' , 'flex-row' , 'px-2' , 'py-1' , 'text-sm' , 'font-medium' , 'transition-colors'
+        , 'duration-200' , 'transform' , 'rounded dark:text-gray-200' , 'hover:bg-gray-900'
+        , 'hover:text-gray-100 md:mx-2' , 'text-red-500'=> $hasWishlist ,
+        'text-gray-200' => $noHasWishlist,
         ])
         class="flex flex-row px-2 py-1 text-sm font-medium text-red-200 transition-colors duration-200 transform rounded dark:text-gray-200 hover:bg-gray-900 hover:text-gray-100 md:mx-2">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 " viewBox="0 0 20 20" fill="currentColor">

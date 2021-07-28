@@ -212,11 +212,11 @@
                 </div>
                 @else
 
-                <div class="max-w-full p-5 mx-2 text-2xl text-center border-2 rounded">
+                <div class="max-w-full p-5 mx-2 text-center border-2 rounded">
                     <h4 class="font-subtitle ">Must be logged to checkOut</h4>
-                    <div class="max-w-full p-5 mx-2 my-2 text-2xl text-center rounded">
+                    <div class="max-w-full p-5 mx-2 my-2 text-center rounded">
                         <x-jet-nav-link href="{{ route('register') }}"
-                            class="px-8 py-3 text-base font-bold text-white uppercase transition-all duration-150 ease-linear bg-purple-500 rounded shadow-md outline-none active:bg-purple-600 hover:shadow-lg focus:outline-none">
+                            class="px-8 py-3 text-sm font-bold text-white uppercase transition-all duration-150 ease-linear bg-purple-500 rounded shadow-md outline-none active:bg-purple-600 hover:shadow-lg focus:outline-none">
                             <span class="text-2xl text-white">{{ __('REGISTER') }}</span>
                         </x-jet-nav-link>
                         <x-jet-nav-link href="{{ route('login') }}"

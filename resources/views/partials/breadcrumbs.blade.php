@@ -4,6 +4,8 @@
         <li><span class="mx-2">></span></li>
         <li><a href="{{ route ('productos_category', ['id' => $category->id ]) }}" class="font-bold">{{ $category->name }}</a></li>
         <li><span class="mx-2">></span></li>
-        {{-- <li>{{ $product->name }}</li> --}}
+        @if( $product )
+        <li class="font-bold">{{ $product->name }}</li>
+        @endif
     </ol>
 </div>

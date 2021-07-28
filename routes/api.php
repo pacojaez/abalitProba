@@ -54,9 +54,9 @@ Route::get('products/{product}', [ProductController::class, 'show']);
 
 Route::post('products', [ProductController::class, 'store']);
 
-Route::put('poducts/edit/{product}', [ProductController::class, 'update']);
+Route::put('products/edit/{product}', [ProductController::class, 'update']);
 
-Route::delete('product/delete/{product}', [ProductController::class, 'destroy']);
+Route::delete('products/delete/{product}', [ProductController::class, 'destroy']);
 
 
 

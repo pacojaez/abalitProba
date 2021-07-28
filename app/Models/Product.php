@@ -48,7 +48,7 @@ class Product extends Model
     * The function get a parameter from the View and retrieve the query from the DB
     * return result
     */
-    public function search( $search ){
+    public static function search( $search ){
 
         $result = empty($search) ? static::query()
                                 : static::query()

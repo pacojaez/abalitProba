@@ -45,6 +45,8 @@ Route::get('category/{id}', function($id) {
     return view('allproductscategory', compact('id'));
 })->name('categoryproducts');
 
+Route::get('/admin/productos', [ProductController::class, 'adminIndex'])->name('admin-productos');
+Route::get('/admin/productos/show/{id}', [ProductController::class, 'adminShow'])->name('admin-productos-show');
 
 /************************************ RUTAS DE CART  **************************/
 

@@ -178,6 +178,7 @@ return [
         App\Providers\JetstreamServiceProvider::class,
         // Darryldecode\Cart\CartServiceProvider::class,
         // App\Providers\CartFacadeServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
     ],
 
@@ -234,6 +235,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         // 'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
         'Cart' => App\Facades\Cart::class,
+        'Image' => Intervention\Image\Facades\Image::class
 
     ],
 

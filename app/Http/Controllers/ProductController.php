@@ -102,4 +102,25 @@ class ProductController extends Controller
         $product->delete();
         return response()->json(null, 204);
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function adminIndex()
+    {
+        return view('product.admin-products');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function adminShow( $id )
+    {
+        $product = Product::find($id);
+        return view('product.admin-products-show', ['product' => $product]);
+    }
 }
